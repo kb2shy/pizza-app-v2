@@ -5,3 +5,11 @@ export const actionTypes = {
     PROCESS_ORDER: 'PROCESS_ORDER',
     GET_PIZZA_ORDERS: 'GET_PIZZA_ORDERS'
 }
+
+/**
+ * @function createPizza
+ * @returns {object} - Action object with type 'CREATE_PIZZA'
+ */
+export const createPizza = () => {
+    return { type: actionTypes.CREATE_PIZZA };
+}
