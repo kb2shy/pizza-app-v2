@@ -7,7 +7,9 @@ import Home from '../Home/Home';
 class App extends Component {
     render() {
         return(
-            <div data-test="component-App">App Component</div>
+            <div data-test="component-App" className="container">
+                <h1 data-test="header-main">Chhaian's Foo-sian Pizza Shop</h1>
+            </div>
         )
     }
 }
