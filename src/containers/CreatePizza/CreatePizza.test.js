@@ -65,6 +65,6 @@ describe('renders CreatePizza component', () => {
         test('renders button for submitting pizza', () => {
             const button = findByTestAttr(wrapper, 'create-pizza-button');
             expect(button.length).toBe(1);
-        })
+        });
     })
 })
