@@ -54,8 +54,8 @@ describe('Process Order component', () => {
             expect(labelDeliveryAddress.length).toBe(1);
         })
 
-        test('input for delivery address exists', () => {
-            const inputDeliveryAddress = findByTestAttr(wrapper, 'input-delivery-address');
+        test('input for delivery street exists', () => {
+            const inputDeliveryAddress = findByTestAttr(wrapper, 'input-delivery-street');
             expect(inputDeliveryAddress.length).toBe(1);
         })
 
