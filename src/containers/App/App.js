@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AddToppings from '../AddToppings/AddToppings';
 import CreatePizza from '../CreatePizza/CreatePizza';
 import Home from '../Home/Home';
+import ProcessOrder from '../ProcessOrder/ProcessOrder';
 
 class App extends Component {
     
@@ -13,6 +14,8 @@ class App extends Component {
                 return <CreatePizza />;
             case "toppings":
                 return <AddToppings />;
+            case "order":
+                return <ProcessOrder />;
             default:
                 return <Home />;
         }
