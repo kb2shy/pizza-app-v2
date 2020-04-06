@@ -18,7 +18,7 @@ describe('renders AddToppings component', () => {
 
     test('renders without error', () => {
         const addToppingsComponent = findByTestAttr(wrapper, 'component-AddToppings');
-        expect(addToppings.length).toBe(1);
+        expect(addToppingsComponent.length).toBe(1);
     });
 
     describe('renders header', () => {

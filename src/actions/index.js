@@ -35,9 +35,10 @@ export const updateView = (view) => {
  * @function addPizza
  * @returns {object}
  */
-export const addPizza = () => {
+export const addPizza = (pizza) => {
     return {
-        type: ADD_PIZZA
+        type: ADD_PIZZA,
+        payload: pizza
     }
 }
 

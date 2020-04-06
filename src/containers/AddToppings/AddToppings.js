@@ -39,11 +39,21 @@ class AddToppings extends Component {
     } else {
       newSelections = this.state.selections.filter(selection => selection !== topping);
     }
-    this.setState(newSelections);
+    this.setState({ selections: newSelections });
+  }
+
+  addAnotherPizza = (e) => {
+    e.preventDefault();
+    console.log(this.props.pizza);
+    const newPizza = {...this.props.pizza, toppings: this.state.selections };
+    // console.log(newPizza);
+    this.props.addPizza(newPizza);
+    this.props.createUpdatePizza({});
+    return this.props.updateView("createPizza");
   }
 
   updatePizza = () => {
-    const newPizza = { ...this.props.pizza, ...this.state.selections };
+    const newPizza = { ...this.props.pizza, toppings: this.state.selections };
     this.props.createUpdatePizza(newPizza);
     return this.props.updateView("order")
   }
@@ -54,14 +64,71 @@ class AddToppings extends Component {
         <h3>Add Toppings</h3>
         <div>
           <form className="form-check">
-            <label>Cheeses</label><br />
-            {cheeses.map((cheese, index) => {
-              return (<span className="form-check">
-                <input key={index} type="checkbox" value={cheese.value} id={cheese.label} name={cheese.label} />
-                <label htmlFor={cheese.label}>{cheese.label}</label><br />
-              </span>
-              )
-            })}
+            <div className="card-group">
+              <div className="card">
+                <div className="card-header">Cheeses</div>
+                <div className="card-body">
+                  {cheeses.map((cheese, index) => {
+                    return (<span key={index} className="form-check">
+                      <input 
+                        type="checkbox" 
+                        value={cheese.value}
+                        onChange={(e) => this.onSelectionChange(e.target.value)} 
+                        id={cheese.label} 
+                        name={cheese.label} 
+                      />
+                      <label htmlFor={cheese.label} style={{marginLeft: 5}}>{cheese.label}</label><br />
+                    </span>
+                    )
+                  })}
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-header">Veggies</div>
+                <div className="card-body">
+                  {/* <label>Cheeses</label><br /> */}
+                  {veggies.map((veggie, index) => {
+                    return (<span key={index} className="form-check">
+                      <input 
+                        type="checkbox" 
+                        value={veggie.value} 
+                        onChange={(e) => this.onSelectionChange(e.target.value)}
+                        id={veggie.label} 
+                        name={veggie.label} />
+                      <label htmlFor={veggie.label} style={{marginLeft: 5}}>{veggie.label}</label><br />
+                    </span>
+                    )
+                  })}
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-header">Meat</div>
+                <div className="card-body">
+                  {/* <label>Cheeses</label><br /> */}
+                  {meat.map((m, index) => {
+                    return (<span key={index} className="form-check">
+                      <input 
+                        type="checkbox" 
+                        value={m.value} 
+                        onChange={(e) => this.onSelectionChange(e.target.value)}
+                        id={m.label} 
+                        name={m.label} />
+                      <label htmlFor={m.label} style={{marginLeft: 5}}>{m.label}</label><br />
+                    </span>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+            <button 
+              className="btn btn-warning"
+              onClick={(e) => this.addAnotherPizza(e)}
+            >Create Another Pizza
+            </button>
+            <button 
+              className="btn btn-primary"
+            >Make My Pizzas
+            </button>
           </form>
         </div>
 
@@ -72,7 +139,7 @@ class AddToppings extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  pizza: state.pizza
+  pizza: state.createPizza
 })
 
 export default connect(mapStateToProps, { addPizza, createUpdatePizza, updateView })(AddToppings)

@@ -33,7 +33,9 @@ class CreatePizza extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.createUpdatePizza(this.state);
+        const pizza = this.state;
+        console.log(pizza);
+        this.props.createUpdatePizza(pizza);
         return this.props.updateView("toppings");
     }
 

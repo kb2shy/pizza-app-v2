@@ -2,8 +2,10 @@
 import { combineReducers } from 'redux';
 import createPizza from './createPizzaReducer';
 import updateView from './updateViewReducer';
+import addPizza from './addPizzaReducer';
 
 export default combineReducers({
     createPizza,
     updateView,
+    addPizza,
 })
