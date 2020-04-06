@@ -1,11 +1,8 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 import { findByTestAttr, storeFactory } from '../../../test/testUtils';
 
 import App from './App';
-
-Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 /**
  * Factory function to create a ShallowWrapper for the App component
@@ -14,20 +11,31 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
  * @param {any} state - initial state for set up
  * @returns {ShallowWrapper}
  */
-const setup = (props={}, state={}) => {
-    return shallow(<App {...props} />);
+const setup = (state={}) => {
+    const store = storeFactory(state);
+    const wrapper = shallow(<App store={store} />).dive().dive();
+    return wrapper;
 }
 
-test('renders App without error', () => {
-    const wrapper = setup();
-    const appComponent = findByTestAttr(wrapper, 'component-App');
-    expect(appComponent.length).toBe(1);
-});
+describe('renders App component', () => {
+    test('renders without error', () => {
+        const wrapper = setup();
+        const appComponent = findByTestAttr(wrapper, 'component-App');
+        expect(appComponent.length).toBe(1);
+    });
+    
+    test('renders header', () => {
+        const wrapper = setup();
+        const header = findByTestAttr(wrapper, 'header-main');
+        expect(header.length).toBe(1);
+    });
 
-test('renders header `Chhaian\'s Foo-sian Pizza Shop`', () => {
-    const wrapper = setup();
-    const header = findByTestAttr(wrapper, 'header-main');
-    expect(header.length).toBe(1);
-});
+    test('header contains `Chhaian\'s Foo-sian Pizza Shop`', () => {
+        const wrapper = setup();
+        const header = findByTestAttr(wrapper, 'header-main');
+        expect(header.text()).toContain(`Chhaian\'s Foo-sian Pizza Shop`);
+    })
+})
+
 
 

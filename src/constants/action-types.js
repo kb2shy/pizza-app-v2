@@ -1,0 +1,4 @@
+export const UPDATE_VIEW = 'UPDATE_VIEW';
+export const CREATE_UPDATE_PIZZA = 'CREATE_UPDATE_PIZZA';
+export const ADD_PIZZA = 'ADD_PIZZAS';
+export const ADD_CUSTOMER_INFO = 'ADD_CUSTOMER_INFO';
