@@ -49,7 +49,7 @@ export const addPizza = (pizza) => {
  * @returns {object} 
  */
 
-export const customerInfo = (customer) => {
+export const addCustomerInfo = (customer) => {
     return {
         type: ADD_CUSTOMER_INFO,
         payload: customer
