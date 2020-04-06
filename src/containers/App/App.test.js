@@ -18,20 +18,21 @@ const setup = (state={}) => {
 }
 
 describe('renders App component', () => {
+    let wrapper;
+    beforeEach(() => {
+        wrapper = setup();
+    })
     test('renders without error', () => {
-        const wrapper = setup();
         const appComponent = findByTestAttr(wrapper, 'component-App');
         expect(appComponent.length).toBe(1);
     });
     
     test('renders header', () => {
-        const wrapper = setup();
         const header = findByTestAttr(wrapper, 'header-main');
         expect(header.length).toBe(1);
     });
 
     test('header contains `Chhaian\'s Foo-sian Pizza Shop`', () => {
-        const wrapper = setup();
         const header = findByTestAttr(wrapper, 'header-main');
         expect(header.text()).toContain(`Chhaian\'s Foo-sian Pizza Shop`);
     })
