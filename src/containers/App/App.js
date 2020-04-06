@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// import AddToppings from '../AddToppings/AddToppings';
+import AddToppings from '../AddToppings/AddToppings';
 import CreatePizza from '../CreatePizza/CreatePizza';
 import Home from '../Home/Home';
 
@@ -10,9 +10,11 @@ class App extends Component {
     onViewChange = () => {
         switch(this.props.view){
             case "createPizza":
-                return <CreatePizza />
+                return <CreatePizza />;
+            case "toppings":
+                return <AddToppings />;
             default:
-                return <Home />
+                return <Home />;
         }
     }
 
