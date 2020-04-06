@@ -11,8 +11,10 @@ import App from './App';
  * @param {any} state - initial state for set up
  * @returns {ShallowWrapper}
  */
-const setup = (props={}) => {
-    return shallow(<App {...props} />).dive().dive();
+const setup = (state={}) => {
+    const store = storeFactory(state);
+    const wrapper = shallow(<App store={store} />).dive().dive();
+    return wrapper;
 }
 
 describe('renders App component', () => {

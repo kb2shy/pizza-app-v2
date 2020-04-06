@@ -6,6 +6,7 @@ import CreatePizza from '../CreatePizza/CreatePizza';
 import Home from '../Home/Home';
 
 class App extends Component {
+    
     onViewChange = () => {
         switch(this.props.view){
             case "createPizza":
@@ -26,7 +27,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    view: state.view,
+    view: state.updateView,
 })
 
 export default connect(mapStateToProps)(App);

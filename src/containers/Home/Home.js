@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateView } from '../../actions/';
 
-export class UnconnectedHome extends Component {
-
-    // updateStoreView = (e) => {
-    //     e.preventDefault();
-    //     updateView("createPizza");
-    // }
+class Home extends Component {
 
     render(){
         const { updateView } = this.props;
@@ -27,4 +22,4 @@ export class UnconnectedHome extends Component {
     }
 }
 
-export default connect(null, { updateView })(UnconnectedHome);
+export default connect(null, { updateView })(Home);

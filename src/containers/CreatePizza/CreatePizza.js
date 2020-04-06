@@ -5,7 +5,7 @@ class CreatePizza extends Component {
     render() {
         return (
             <div data-test="component-CreatePizza">
-                <h3 data-test="header-CreatePizza">Press START to create a Pizza</h3>
+                <h3 data-test="header-CreatePizza">Create Pizza</h3>
             </div>
         )
     }

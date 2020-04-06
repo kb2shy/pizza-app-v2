@@ -1,18 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { findByTestAttr } from '../../../test/testUtils';
+import { findByTestAttr, storeFactory } from '../../../test/testUtils';
 
-import UnconnectedHome from './Home';
+import Home from './Home';
+
+const defaultProps = { header: 'Press START to create pizza'};
 
 /**
  * Factory function to create a ShallowWrapper for the Home Component
  * @function setup
  * @param {object} props 
- * @param {any} state 
  * @returns {ShallowWrapper}
  */
-const setup = (props={}) => {
-    return shallow(<UnconnectedHome {...props} />);
+const setup = (state={}) => {
+    const store = storeFactory(state);
+    const wrapper = shallow(<Home store={store} />).dive();
+    return wrapper;
 }
 
 describe('renders Home component', () => {
