@@ -31,11 +31,10 @@ class CreatePizza extends Component {
         sauceLevel: 3
     }
 
-    handleClick = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Create Pizza button clicked");
-        createUpdatePizza(this.state);
-        updateView("toppings");
+        this.props.createUpdatePizza(this.state);
+        return this.props.updateView("toppings");
     }
 
     render() {
@@ -43,7 +42,7 @@ class CreatePizza extends Component {
             <div data-test="component-CreatePizza" style={{ textAlign: "center"}}>
                 <h3 data-test="header-CreatePizza">Create Pizza</h3>
                 <div className="form-group" style={{ textAlign: "center", width: "50vw", margin: "auto"}}>
-                    <form>
+                    <form onSubmit={(e) => this.handleSubmit(e)}>
                         <label htmlFor="crustOptions">Crust Type</label>
                         <select 
                             className="form-control" 
@@ -82,8 +81,8 @@ class CreatePizza extends Component {
                         ></input>
                         <br />
                         <button
+                            type="submit"
                             className="btn btn-primary"
-                            onSubmit={(e) => this.handleClick(e)}
                         >Create Pizza</button>
                     </form>
                 </div>
