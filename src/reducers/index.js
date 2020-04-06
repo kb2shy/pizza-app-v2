@@ -2,25 +2,10 @@
 import { combineReducers } from 'redux';
 import createPizza from './createPizzaReducer';
 import updateView from './updateViewReducer';
-
-// const initialState = {
-//     customer: {},
-//     pizza: {},
-//     pizzas: [],
-//     view: 'home'
-// }
+import addPizza from './addPizzaReducer';
 
 export default combineReducers({
     createPizza,
-    updateView
+    updateView,
+    addPizza,
 })
-// export default (state = initialState, action) => {
-//     switch(action.type) {
-//         case UPDATE_VIEW:
-//             return {...state, view: action.payload };
-//         case CREATE_UPDATE_PIZZA: 
-//             return {...state, pizza: action.payload };
-//         default:
-//             return state;
-//     }
-// }

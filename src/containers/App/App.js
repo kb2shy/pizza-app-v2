@@ -20,7 +20,7 @@ class App extends Component {
 
     render() {
         return(
-            <div data-test="component-App" style={{ textAlign: "center"}}>
+            <div data-test="component-App" style={{ textAlign: "center"}} className="container">
                 <h1 data-test="header-main">Chhaian's Foo-sian Pizza Shop</h1>
                 {this.onViewChange()}
             </div>
