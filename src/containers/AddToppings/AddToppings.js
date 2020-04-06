@@ -44,18 +44,18 @@ class AddToppings extends Component {
 
   addAnotherPizza = (e) => {
     e.preventDefault();
-    console.log(this.props.pizza);
     const newPizza = {...this.props.pizza, toppings: this.state.selections };
-    // console.log(newPizza);
     this.props.addPizza(newPizza);
     this.props.createUpdatePizza({});
     return this.props.updateView("createPizza");
   }
 
-  updatePizza = () => {
+  processOrder = (e) => {
+    e.preventDefault();
     const newPizza = { ...this.props.pizza, toppings: this.state.selections };
-    this.props.createUpdatePizza(newPizza);
-    return this.props.updateView("order")
+    this.props.addPizza(newPizza);
+    this.props.createUpdatePizza({});
+    return this.props.updateView("order");
   }
 
   render() {
@@ -65,7 +65,7 @@ class AddToppings extends Component {
         <div>
           <form className="form-check">
             <div className="card-group">
-              <div className="card">
+              <div className="card mx-1" >
                 <div className="card-header">Cheeses</div>
                 <div className="card-body">
                   {cheeses.map((cheese, index) => {
@@ -83,7 +83,7 @@ class AddToppings extends Component {
                   })}
                 </div>
               </div>
-              <div className="card">
+              <div className="card mx-1" >
                 <div className="card-header">Veggies</div>
                 <div className="card-body">
                   {/* <label>Cheeses</label><br /> */}
@@ -101,7 +101,7 @@ class AddToppings extends Component {
                   })}
                 </div>
               </div>
-              <div className="card">
+              <div className="card mx-1">
                 <div className="card-header">Meat</div>
                 <div className="card-body">
                   {/* <label>Cheeses</label><br /> */}
@@ -120,15 +120,18 @@ class AddToppings extends Component {
                 </div>
               </div>
             </div>
-            <button 
-              className="btn btn-warning"
-              onClick={(e) => this.addAnotherPizza(e)}
-            >Create Another Pizza
-            </button>
-            <button 
-              className="btn btn-primary"
-            >Make My Pizzas
-            </button>
+            <div className="mt-3">
+              <button 
+                className="btn btn-warning"
+                onClick={(e) => this.addAnotherPizza(e)}
+              >Create Another Pizza
+              </button>
+              <button 
+                className="btn btn-primary"
+                onClick={(e) => this.processOrder(e)}
+              >Make My Pizzas
+              </button>
+            </div>
           </form>
         </div>
 
